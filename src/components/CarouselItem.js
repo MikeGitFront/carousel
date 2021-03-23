@@ -4,7 +4,7 @@ const styles = {
     item: {
         width: '400px',
         height: '200px',
-        backgroundColor: 'yellow',
+        backgroundColor: 'green',
         border: '1px solid black',
     }
 }
