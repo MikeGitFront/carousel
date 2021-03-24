@@ -27,11 +27,13 @@ const styles = {
     },
 }
 
-const Carousel = ({ children, slideWidth, slideHeigth }) => {
+const Carousel = ({ children, slideWidth = 1000, slideHeigth = 600 }) => {
     const [currentItem, setCurrentItem] = useState(2)
     const itemContainer = useRef(null)
     const viewPort = useRef(null)
     const [newChildren, setNewChildren] = useState(children)
+    const [position, setPosition] = useState(null)
+    const [count, setCount] = useState(0)
 
     const itemStyles = {
         height: `${slideHeigth}px`,
@@ -109,11 +111,50 @@ const Carousel = ({ children, slideWidth, slideHeigth }) => {
 
 
 
+    const touchStartHandler = (e) => {
+        console.log('touchStart')
+        setPosition(e.changedTouches[0].pageX)
+    }
+    const touchMoveHandler = () => {
+        setCount(prev => prev + 1)
+        if (position < slideWidth && position > slideWidth / 2) {
+            itemContainer.current.style.transform = `translateX(-${slideWidth * (currentItem - 1) + count * currentItem}px)`
+        }
+        else if (position > 0 && position < slideWidth / 2) {
+            itemContainer.current.style.transform = `translateX(-${slideWidth * (currentItem - 1) - count * currentItem}px)`
+        }
+        console.log('touchMove')
+    }
+    const touchEndHandler = (e) => {
+        if (position - e.changedTouches[0].pageX > slideWidth / 2) {
+            console.log('Scrolling forward')
+            nextItemHandler()
+            setCount(0)
+        }
+        else if (e.changedTouches[0].pageX - position > slideWidth / 2) {
+            console.log('Scrolling backwards')
+            previousItemHandler()
+            setCount(0)
+        }
+        else {
+            itemContainer.current.style.transform = `translateX(-${slideWidth * (currentItem - 1)}px)`
+            itemContainer.current.style.transitionDuration = `0.7s`
+        }
+        console.log(e.changedTouches[0].pageX)
+    }
+
+
+
     return (
         <div style={styles.wrapper}>
             <button style={styles.buttons.left} onClick={previousItemHandler}>Previous</button>
             <div ref={viewPort} style={styles.viewPort}>
-                <div onTouchStart={() => console.log('move')} ref={itemContainer} style={styles.itemContainer}>
+                <div
+                    onTouchEnd={touchEndHandler}
+                    onTouchMove={touchMoveHandler}
+                    onTouchStart={touchStartHandler}
+                    ref={itemContainer}
+                    style={styles.itemContainer}>
                     {newChildren.map((item, i) => <div key={i} style={itemStyles}>{item}</div>)}
                 </div>
             </div>

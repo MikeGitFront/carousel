@@ -18,12 +18,12 @@ const App = () => {
     return (
         <div className="App" style={styles.app}>
             <Carousel
-                slideHeigth={600}
-                slideWidth={1000}
+                slideHeigth={200}
+                slideWidth={300}
             >
                 <img height="100%" width="100%" src={image} alt="someImage" />
                 <h2>Text content</h2>
-                <div>
+                <div style={{ backgroundColor: 'blue' }}>
                     <h1>awdwa</h1>
                     <p>awdwa</p>
                     <div>awdwa</div>
