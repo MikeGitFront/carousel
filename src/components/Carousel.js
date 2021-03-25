@@ -95,7 +95,6 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
     const [swipeMovePoint, setSwipeMovePoint] = useState(1)
 
     const [swipePoint, setSwipePoint] = useState(null)
-    const [currPosition, setCurrPosition] = useState(1)
     const [isMoving, setIsMoving] = useState(false)
 
     const translateStep = 100 / slidestoShow
@@ -294,8 +293,16 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
     }
 
     const getToTheSlide = (i) => {
-        setCurrentPosition(-(i + 1) * 100)
-        setIndex(i)
+        setTransition(0.6)
+        if (infinite) {
+            setCurrentPosition(-(i + 1) * 100)
+            setIndex(i)
+        }
+        else {
+            setCurrentPosition(-i * 100)
+            setIndex(i)
+        }
+
     }
 
 
