@@ -85,7 +85,7 @@ const Carousel = ({ children, infinite }) => {
         if (currentPosition > -(container.current.children.length - 1) * 100) {
             setCurrentPosition(prev => prev - translateStep)
 
-            if (currentPosition === -(container.current.children.length - 2) * 100 && infinite) {
+            if (currentPosition <= -(container.current.children.length - 2) * 100 && infinite) {
                 setTimeout(() => {
                     setCurrentPosition(-100)
                     setTransition(0)
@@ -101,7 +101,7 @@ const Carousel = ({ children, infinite }) => {
         if (currentPosition < 0) {
             setCurrentPosition(prev => prev + translateStep)
 
-            if (currentPosition === -100 && infinite) {
+            if (currentPosition >= -100 && infinite) {
                 console.log('da')
                 setTimeout(() => {
                     setCurrentPosition(-(container.current.children.length - 2) * 100)
@@ -114,18 +114,75 @@ const Carousel = ({ children, infinite }) => {
         }
     }
 
+    const translateStep = 100
+
     const [startSwipePoint, setStartSwipePoint] = useState(null)
+    const [swipeMovePoint, setSwipeMovePoint] = useState(1)
 
     const swipeMobileStart = (e) => {
         setStartSwipePoint(e.changedTouches[0].clientX)
     }
 
     const swipeMobileMove = (e) => {
+        if (startSwipePoint < window.innerWidth && startSwipePoint > window.innerWidth / 2) {
+            if (infinite) {
+                if (currentPosition <= -100 * container.current.children.length - 2) {
+                    return
+                }
+                setCurrentPosition(prev => prev - swipeMovePoint)
+            }
+            else {
+                console.log(-100 * (container.current.children.length - 1))
+                if (currentPosition === -100 * (container.current.children.length - 1)) {
+                    return
+                }
+                setCurrentPosition(prev => prev - swipeMovePoint)
+            }
+
+        }
+        if (startSwipePoint > 0 && startSwipePoint < window.innerWidth / 2) {
+            if (currentPosition >= 0) {
+                return
+            }
+            setCurrentPosition(prev => prev + swipeMovePoint)
+        }
 
     }
+
     const swipeMobileEnd = (e) => {
-        if (window.innerWidth / 3 < startSwipePoint - (e.changedTouches[0].clientX)) {
-            console.log('end')
+        if (startSwipePoint - (e.changedTouches[0].clientX) >= window.innerWidth / 3) {
+            if (infinite) {
+                rightMoveHandler()
+                setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
+            }
+            else {
+                if (currentPosition <= -300) {
+                    return
+                }
+                rightMoveHandler()
+                setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
+            }
+        }
+
+
+        else if (e.changedTouches[0].clientX - startSwipePoint > window.innerWidth / 3) {
+            if (infinite) {
+                leftMoveHandler()
+                setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+            }
+            else {
+                if (currentPosition >= 0) {
+                    return
+                }
+                leftMoveHandler()
+                setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+            }
+        }
+        else if ((e.changedTouches[0].clientX < window.innerWidth && e.changedTouches[0].clientX > window.innerWidth / 1.5) && ((startSwipePoint - (e.changedTouches[0].clientX) < window.innerWidth / 2))) {
+            setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+        }
+        else if ((e.changedTouches[0].clientX < window.innerWidth / 1.5 && e.changedTouches[0].clientX > 1) && ((startSwipePoint - (e.changedTouches[0].clientX) < window.innerWidth / 2))) {
+            setCurrentPosition(Math.floor(currentPosition / 100) * 100)
         }
     }
     const swipeStart = (e) => {
@@ -145,6 +202,7 @@ const Carousel = ({ children, infinite }) => {
                     onTouchStart={swipeMobileStart}
                     onTouchMove={swipeMobileMove}
                     onTouchEnd={swipeMobileEnd}
+                    onTouchCancel={() => console.log('cancel')}
                     key={i}
                     {...item.props}
                 >{item.props.children}</Item>)}
