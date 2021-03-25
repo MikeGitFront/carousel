@@ -43,23 +43,24 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
     display:flex;
-    transform:translate(${props => props.step}%);
-    transition:${props => props.transition}s all ease;
+    transform:translate(${({ step }) => step}%);
+    transition:${({ transition }) => transition}s all ease;
 `
 
 const Item = styled.div`
-    background:url('${props => props.src}');
+    background:url('${({ src }) => src}');
     background-position:center;
     background-size:cover;
     width:100%;
     min-width:100vw;
     height:100%;
     min-height:100vh;
-    display:${props => props.display || 'flex'};
-    justify-content:${props => props.justify || 'center'};
-    align-items:${props => props.align || 'center'};
-    background-color:${props => props.bgcolor || 'white'};
-    padding:${props => props.padding || '4px'};
+    display:${({ display }) => display || 'flex'};
+    justify-content:${({ justify }) => justify || 'center'};
+    align-items:${({ align }) => align || 'center'};
+    background-color:${({ bgcolor }) => bgcolor || 'white'};
+    color:${({ color }) => color || 'white'};
+    padding:${({ padding }) => padding || '4px'};
 `
 
 const Carousel = ({ children, infinite }) => {
@@ -67,6 +68,9 @@ const Carousel = ({ children, infinite }) => {
     const [transition, setTransition] = useState(0.6)
     const container = useRef()
     const [newChildren, setNewChildren] = useState(children)
+
+    const [startSwipePoint, setStartSwipePoint] = useState(null)
+    const [swipeMovePoint, setSwipeMovePoint] = useState(1)
 
     useEffect(() => {
         if (infinite) {
@@ -116,9 +120,6 @@ const Carousel = ({ children, infinite }) => {
 
     const translateStep = 100
 
-    const [startSwipePoint, setStartSwipePoint] = useState(null)
-    const [swipeMovePoint, setSwipeMovePoint] = useState(1)
-
     const swipeMobileStart = (e) => {
         setStartSwipePoint(e.changedTouches[0].clientX)
     }
@@ -132,7 +133,6 @@ const Carousel = ({ children, infinite }) => {
                 setCurrentPosition(prev => prev - swipeMovePoint)
             }
             else {
-                console.log(-100 * (container.current.children.length - 1))
                 if (currentPosition === -100 * (container.current.children.length - 1)) {
                     return
                 }
@@ -185,14 +185,88 @@ const Carousel = ({ children, infinite }) => {
             setCurrentPosition(Math.floor(currentPosition / 100) * 100)
         }
     }
+
+
+    // desktop swipe
+
+
+
+
+
+    const [swipePoint, setSwipePoint] = useState(null)
+    const [currPosition, setCurrPosition] = useState(1)
+    const [isMoving, setIsMoving] = useState(false)
+
     const swipeStart = (e) => {
-
+        setSwipePoint(e.clientX)
+        setIsMoving(true)
     }
+
     const swipeMove = (e) => {
+        if (isMoving) {
+            if (swipePoint < window.innerWidth && swipePoint > window.innerWidth / 2) {
+                if (infinite) {
+                    if (currentPosition <= -100 * container.current.children.length - 2) {
+                        return
+                    }
+                    setCurrentPosition(prev => prev - swipeMovePoint)
+                }
+                else {
+                    if (currentPosition === -100 * (container.current.children.length - 1)) {
+                        return
+                    }
+                    setCurrentPosition(prev => prev - swipeMovePoint)
+                }
 
+            }
+            if (swipePoint > 0 && swipePoint < window.innerWidth / 2) {
+                if (currentPosition >= 0) {
+                    return
+                }
+                setCurrentPosition(prev => prev + swipeMovePoint)
+            }
+            else {
+                return
+            }
+        }
     }
-    const swipeEnd = (e) => {
 
+    const swipeEnd = (e) => {
+        setIsMoving(false)
+        if (swipePoint - (e.clientX) >= window.innerWidth / 3) {
+            if (infinite) {
+                rightMoveHandler()
+                setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
+            }
+            else {
+                if (currentPosition <= -300) {
+                    return
+                }
+                rightMoveHandler()
+                setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
+            }
+        }
+
+
+        else if (e.clientX - swipePoint > window.innerWidth / 3) {
+            if (infinite) {
+                leftMoveHandler()
+                setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+            }
+            else {
+                if (currentPosition >= 0) {
+                    return
+                }
+                leftMoveHandler()
+                setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+            }
+        }
+        else if ((e.clientX < window.innerWidth && e.clientX > window.innerWidth / 1.5) && ((swipePoint - (e.clientX) < window.innerWidth / 2))) {
+            setCurrentPosition(Math.ceil(currentPosition / 100) * 100)
+        }
+        else if ((e.clientX < window.innerWidth / 1.5 && e.clientX > 1) && ((swipePoint - (e.clientX) < window.innerWidth / 2))) {
+            setCurrentPosition(Math.floor(currentPosition / 100) * 100)
+        }
     }
 
     return (
@@ -202,7 +276,11 @@ const Carousel = ({ children, infinite }) => {
                     onTouchStart={swipeMobileStart}
                     onTouchMove={swipeMobileMove}
                     onTouchEnd={swipeMobileEnd}
-                    onTouchCancel={() => console.log('cancel')}
+                    onMouseDown={swipeStart}
+                    onMouseMove={swipeMove}
+                    onMouseUp={swipeEnd}
+                    // onMouseDown={(e) => console.log('down', e.clientX)}
+                    // onMouseUp={(e) => console.log('up', e.clientX)}
                     key={i}
                     {...item.props}
                 >{item.props.children}</Item>)}
