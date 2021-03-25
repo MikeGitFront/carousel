@@ -23,10 +23,10 @@ const App = () => {
                 <div src={picture1} ></div>
                 <div src={picture2} ></div>
                 <div src={picture3} ></div>
-                <div align="flex-start"
+                {/* <div align="flex-start"
                     padding="4px 10px">
                     <h1>Hello</h1>
-                </div>
+                </div> */}
             </Carousel>
         </AppWrapper>
     );
