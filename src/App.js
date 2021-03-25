@@ -8,7 +8,7 @@ import picture3 from './images/mountains3.jpg'
 
 const App = () => {
     return (
-        <Carousel infinite>
+        <Carousel>
             <div src={picture} ></div>
             <div src={picture1} ></div>
             <div src={picture2} ></div>

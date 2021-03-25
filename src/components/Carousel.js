@@ -63,7 +63,7 @@ const Item = styled.div`
     padding:${({ padding }) => padding || '4px'};
 `
 
-const Carousel = ({ children, infinite }) => {
+const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const [transition, setTransition] = useState(0.6)
     const container = useRef()
@@ -71,6 +71,12 @@ const Carousel = ({ children, infinite }) => {
 
     const [startSwipePoint, setStartSwipePoint] = useState(null)
     const [swipeMovePoint, setSwipeMovePoint] = useState(1)
+
+    const [swipePoint, setSwipePoint] = useState(null)
+    const [currPosition, setCurrPosition] = useState(1)
+    const [isMoving, setIsMoving] = useState(false)
+
+    const translateStep = 100 / slidestoShow
 
     useEffect(() => {
         if (infinite) {
@@ -106,7 +112,6 @@ const Carousel = ({ children, infinite }) => {
             setCurrentPosition(prev => prev + translateStep)
 
             if (currentPosition >= -100 && infinite) {
-                console.log('da')
                 setTimeout(() => {
                     setCurrentPosition(-(container.current.children.length - 2) * 100)
                     setTransition(0)
@@ -118,8 +123,7 @@ const Carousel = ({ children, infinite }) => {
         }
     }
 
-    const translateStep = 100
-
+    // mobile swipe
     const swipeMobileStart = (e) => {
         setStartSwipePoint(e.changedTouches[0].clientX)
     }
@@ -156,7 +160,7 @@ const Carousel = ({ children, infinite }) => {
                 setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
             }
             else {
-                if (currentPosition <= -300) {
+                if (currentPosition <= -100 * (container.current.children.length - 1)) {
                     return
                 }
                 rightMoveHandler()
@@ -188,15 +192,6 @@ const Carousel = ({ children, infinite }) => {
 
 
     // desktop swipe
-
-
-
-
-
-    const [swipePoint, setSwipePoint] = useState(null)
-    const [currPosition, setCurrPosition] = useState(1)
-    const [isMoving, setIsMoving] = useState(false)
-
     const swipeStart = (e) => {
         setSwipePoint(e.clientX)
         setIsMoving(true)
@@ -239,7 +234,7 @@ const Carousel = ({ children, infinite }) => {
                 setCurrentPosition(Math.ceil((currentPosition / 100) - 1) * 100)
             }
             else {
-                if (currentPosition <= -300) {
+                if (currentPosition <= -100 * (container.current.children.length - 1)) {
                     return
                 }
                 rightMoveHandler()
@@ -279,8 +274,6 @@ const Carousel = ({ children, infinite }) => {
                     onMouseDown={swipeStart}
                     onMouseMove={swipeMove}
                     onMouseUp={swipeEnd}
-                    // onMouseDown={(e) => console.log('down', e.clientX)}
-                    // onMouseUp={(e) => console.log('up', e.clientX)}
                     key={i}
                     {...item.props}
                 >{item.props.children}</Item>)}
