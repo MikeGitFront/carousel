@@ -33,6 +33,28 @@ const ButtonRight = styled.button`
         color:red;
     }
 `
+
+const Dots = styled.div`
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`
+
+const Dot = styled.button`
+    width:20px;
+    height:20px;
+    border:1px solid black;
+    background-color:${({ active }) => active ? 'black' : 'white'};
+    border-radius:20px;
+    outline:none;
+    box-shadow:${({ active }) => active ? 'inset 0px 0px 2px 2px white' : 'none'};
+`
+
+
 const Wrapper = styled.div`
     background-color:blue;
     width:100vw;
@@ -78,6 +100,8 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
 
     const translateStep = 100 / slidestoShow
 
+    const [index, setIndex] = useState(0)
+
     useEffect(() => {
         if (infinite) {
             const fakeFirstChild = container.current.children[0].cloneNode(true)
@@ -99,13 +123,16 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
                 setTimeout(() => {
                     setCurrentPosition(-100)
                     setTransition(0)
+                    setIndex(0)
                 }, 600)
             }
         }
         else {
             return
         }
+        setIndex(prev => prev + 1)
     }
+    console.log(index)
     const leftMoveHandler = () => {
         setTransition(0.6)
         if (currentPosition < 0) {
@@ -115,12 +142,14 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
                 setTimeout(() => {
                     setCurrentPosition(-(container.current.children.length - 2) * 100)
                     setTransition(0)
+                    setIndex(container.current.children.length - 3)
                 }, 600)
             }
         }
         else {
             return
         }
+        setIndex(prev => prev - 1)
     }
 
     // mobile swipe
@@ -264,6 +293,12 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
         }
     }
 
+    const getToTheSlide = (i) => {
+        setCurrentPosition(-(i + 1) * 100)
+        setIndex(i)
+    }
+
+
     return (
         <Wrapper>
             <Container ref={container} className="container" step={currentPosition} transition={transition}>
@@ -283,9 +318,15 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
             ><FaArrowAltCircleLeft /></ButtonLeft>
             <ButtonRight
                 onClick={rightMoveHandler}
-            >
-                <FaArrowAltCircleRight />
+            ><FaArrowAltCircleRight />
             </ButtonRight>
+            <Dots>
+                {newChildren.map((item, i) => <Dot
+                    onClick={() => getToTheSlide(i)}
+                    key={i}
+                    active={i === index ? true : false}
+                />)}
+            </Dots>
         </Wrapper>
     )
 }

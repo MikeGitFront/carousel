@@ -8,7 +8,7 @@ import picture3 from './images/mountains3.jpg'
 
 const App = () => {
     return (
-        <Carousel>
+        <Carousel infinite>
             <div src={picture} ></div>
             <div src={picture1} ></div>
             <div src={picture2} ></div>
@@ -16,12 +16,12 @@ const App = () => {
             <div
                 align="flex-start"
                 padding="4px 10px"
-                bgcolor="green"
+                bgcolor="#333"
             >
                 <h1>Some content</h1>
             </div>
             <div
-                bgcolor="red"
+                bgcolor="#999"
             ><iframe width="560" height="315" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
         </Carousel>
     );
