@@ -15,11 +15,13 @@
 
 <h3><i>Installing:</i></h3>
 Write it in your terminal: 
+
 ```terminal
 //Make sure you don't have folder named 'carousel' in the directory
 
 git clone https://github.com/MikeGitFront/carousel.git
 ```
+
 ```terminal
 //Installing all dependencies
 
