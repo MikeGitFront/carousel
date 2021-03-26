@@ -16,6 +16,15 @@ const ButtonLeft = styled.button`
     &:hover{
         color:red;
     }
+
+    @media(max-width:480px) {
+        left:15px;
+        font-size:30px;
+    }
+    @media(max-width:320px) {
+        left:2px;
+        font-size:26px;
+    }
 `
 
 const ButtonRight = styled.button`
@@ -31,6 +40,15 @@ const ButtonRight = styled.button`
 
     &:hover{
         color:red;
+    }
+
+    @media(max-width:480px) {
+        right:15px;
+        font-size:30px;
+    }
+    @media(max-width:320px) {
+        right:2px;
+        font-size:26px;
     }
 `
 
@@ -153,6 +171,7 @@ const Carousel = ({ children, infinite, slidesToShow = 1 }) => {
     // mobile swipe
     const swipeMobileStart = (e) => {
         setStartSwipePoint(e.changedTouches[0].clientX)
+        setTransition(0.6)
     }
 
     const swipeMobileMove = (e) => {
@@ -221,6 +240,7 @@ const Carousel = ({ children, infinite, slidesToShow = 1 }) => {
     // desktop swipe
     const swipeStart = (e) => {
         setSwipePoint(e.clientX)
+        setTransition(0.6)
         setIsMoving(true)
     }
 
