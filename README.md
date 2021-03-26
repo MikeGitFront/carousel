@@ -7,7 +7,7 @@ Carousel characteristics:
   <li>Works for mobile and desktop devices</li>
   <li>Supports swipes</li>
   <li>Works for any HTML content</li>
-  <li>It's animated</li>
-  <li><b>Supports infinite option</b></li>
+  <li>Animated</li>
+  <li style="color:red"><b>Supports infinite option</b></li>
   <li><b>Supports scrolling to a selected slide</b></li>
 </ul>
