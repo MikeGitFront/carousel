@@ -1,4 +1,4 @@
 Carousel
 
-![Carousel component Demo](demo/carousel.gif)
+![Carousel component Demo](https://imgur.com/V7e4xs0)
   
