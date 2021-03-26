@@ -54,7 +54,7 @@ git init
 
 
 ```javascript
-//You can pass different parameters to your wrapper 'div', by the way,  they are optional
+//You can pass different parameters to your wrapper 'div', by the way, they are optional
 
 <Carousel>
             <div
@@ -81,9 +81,24 @@ git init
 </ul>
 
 ```javascript
-//You can pass different parameters to your wrapper 'div', by the way,  they are optional
+//You can style inner content the way you want
+
+const Heading = styled.h1`
+color:red;
 
 <Carousel>
-            <div><iframe width="80%" height="300" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
+            <div>
+                <Heading>Some content</Heading>
+            </div>
 </Carousel>
 ```
+
+```javascript
+//If you want to insert iframe, you should also wrap it with 'div' block
+
+<Carousel>
+            <div><iframe width="80%" height="300" src="https://your.content"></iframe></div>
+</Carousel>
+```
+
+
