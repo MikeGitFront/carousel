@@ -105,6 +105,7 @@ const Item = styled.div`
     height:100%;
     min-height:100vh;
     display:${({ display }) => display || 'flex'};
+    grid-template:${({ template }) => template || 'none'};
     justify-content:${({ justify }) => justify || 'center'};
     align-items:${({ align }) => align || 'center'};
     background-color:${({ bgcolor }) => bgcolor || 'white'};
