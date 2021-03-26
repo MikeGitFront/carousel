@@ -93,6 +93,7 @@ import picture from './images/picture'
 
 const Heading = styled.h1`
 color:red;
+`
 
 <Carousel>
             <div>
@@ -115,5 +116,5 @@ color:red;
  <li><a href="https://react-icons.github.io/react-icons/" >React-icons</a></li>
 </ul>
 
-Don't hesitate to become a stargazer :)
+Don't hesitate to become a stargazer :dart:
 
