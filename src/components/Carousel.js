@@ -74,7 +74,7 @@ const Item = styled.div`
     background-position:center;
     background-size:cover;
     width:100%;
-    min-width:100vw;
+    min-width:${({ width }) => width}vw;
     height:100%;
     min-height:100vh;
     display:${({ display }) => display || 'flex'};
@@ -85,7 +85,7 @@ const Item = styled.div`
     padding:${({ padding }) => padding || '4px'};
 `
 
-const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
+const Carousel = ({ children, infinite, slidesToShow = 1 }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const [transition, setTransition] = useState(0.6)
     const container = useRef()
@@ -97,7 +97,7 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
     const [swipePoint, setSwipePoint] = useState(null)
     const [isMoving, setIsMoving] = useState(false)
 
-    const translateStep = 100 / slidestoShow
+    const translateStep = 100 / slidesToShow
 
     const [index, setIndex] = useState(0)
 
@@ -131,7 +131,6 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
         }
         setIndex(prev => prev + 1)
     }
-    console.log(index)
     const leftMoveHandler = () => {
         setTransition(0.6)
         if (currentPosition < 0) {
@@ -317,6 +316,7 @@ const Carousel = ({ children, infinite, slidestoShow = 1 }) => {
                     onMouseMove={swipeMove}
                     onMouseUp={swipeEnd}
                     key={i}
+                    width={translateStep}
                     {...item.props}
                 >{item.props.children}</Item>)}
             </Container>
