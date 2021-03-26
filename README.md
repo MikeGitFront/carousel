@@ -1,7 +1,7 @@
 <h1>Carousel component</h1>
 <br>
 
-<a href="https://imgur.com/a/HIG1fyr">Demo</a>
+<h2>Here you can find short <a href="https://imgur.com/a/HIG1fyr">Demo</a></h2> 
 
 <h2><i>Carousel characteristics:</i></h2>
  <ul>
@@ -43,10 +43,12 @@ git init
 <h2>Your content must be wrapped in 'div' block</h2>
 
 ```javascript
-//If you want to display image you should pass external link or imported image in 'src' attribute
+//If you want to display an image you should pass external link or imported image inside 'src' attribute
+
+import picture from './images/picture'
 
 <Carousel infinite>
-            <div src={pictureURL} ></div>
+            <div src={picture} ></div>
             <div src={'https://your.image'} ></div>
 </Carousel>
 ```
