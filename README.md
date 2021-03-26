@@ -79,3 +79,11 @@ git init
  <li>color (Simple text color)<i>--By default white</i></li>
  <li>padding <i>--By default 4px</i></li>
 </ul>
+
+```javascript
+//You can pass different parameters to your wrapper 'div', by the way,  they are optional
+
+<Carousel>
+            <div><iframe width="80%" height="300" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
+</Carousel>
+```
