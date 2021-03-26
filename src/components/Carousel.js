@@ -117,10 +117,10 @@ const Carousel = ({ children, infinite, slidesToShow = 1 }) => {
     const [currentPosition, setCurrentPosition] = useState(0)
     const [transition, setTransition] = useState(0.6)
     const container = useRef()
-    const [newChildren, setNewChildren] = useState(children)
+    const [newChildren] = useState(children)
 
     const [startSwipePoint, setStartSwipePoint] = useState(null)
-    const [swipeMovePoint, setSwipeMovePoint] = useState(1)
+    const [swipeMovePoint] = useState(1)
 
     const [swipePoint, setSwipePoint] = useState(null)
     const [isMoving, setIsMoving] = useState(false)
@@ -368,5 +368,5 @@ const Carousel = ({ children, infinite, slidesToShow = 1 }) => {
     )
 }
 
-export default Carousel
+export default React.memo(Carousel)
 
