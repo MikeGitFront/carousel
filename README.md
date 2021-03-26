@@ -62,7 +62,7 @@ import picture from './images/picture'
 
 
 ```javascript
-//You can pass different parameters to your wrapper 'div', by the way, they are optional
+//You can pass different parameters to your wrapper 'div' to customize it, by the way, parameters are optional
 
 <Carousel>
             <div
