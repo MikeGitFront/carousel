@@ -1,4 +1,4 @@
 Carousel
 
-![Carousel component Demo](https://imgur.com/V7e4xs0)
+<a href="https://imgur.com/a/HIG1fyr">Demo</a>
   
