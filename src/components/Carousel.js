@@ -60,6 +60,10 @@ const Dots = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+
+    @media(max-height:480px) {
+        bottom:10px;
+    }
 `
 
 const Dot = styled.button`

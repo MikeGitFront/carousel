@@ -20,14 +20,12 @@ const App = () => {
                 src={picture5}
                 align="flex-start"
                 padding="4px 10px"
-                bgcolor="#333"
                 color="black"
             >
                 <h1>Some content</h1>
             </div>
             <div
                 src={picture4}
-                bgcolor="#999"
             ><iframe width="80%" height="300" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
         </Carousel>
     );
