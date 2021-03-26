@@ -8,6 +8,6 @@ Carousel characteristics:
   <li>Supports swipes</li>
   <li>Works for any HTML content</li>
   <li>Animated</li>
-  <li style="color:red"><b>Supports infinite option</b></li>
+  <li><b>Supports infinite option</b></li>
   <li><b>Supports scrolling to a selected slide</b></li>
 </ul>
