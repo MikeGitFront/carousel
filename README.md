@@ -28,6 +28,12 @@ git clone https://github.com/MikeGitFront/carousel.git
 git init
 ```
 
+```terminal
+// Launching local server
+
+npm run dev
+```
+
 <h3><i>Usage:</i></h3>
 
 <h4>Infinite option</h4>
