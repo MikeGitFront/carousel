@@ -14,7 +14,7 @@
 </ul>
 
 <i>Installing:</i>
-You can clone this repository using following: 
+Write it in your terminal: 
 ```terminal
 git clone
 ```
