@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import Carousel from "./components/Carousel";
 import "./Styles.css";
 import picture from './images/mountains.jpg'
@@ -7,6 +7,7 @@ import picture2 from './images/mountains2.jpg'
 import picture3 from './images/mountains3.jpg'
 
 const App = () => {
+
     return (
         <Carousel infinite>
             <div src={picture} ></div>
