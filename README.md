@@ -15,6 +15,6 @@
 
 <i>Installing:</i>
 You can clone this repository using following: 
-```javascript
-Const abc = 4
+```terminal
+git clone
 ```
