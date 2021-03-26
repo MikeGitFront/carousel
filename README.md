@@ -94,12 +94,13 @@ import picture from './images/picture'
 const Heading = styled.h1`
 color:red;
 `
-
+<>
 <Carousel>
             <div>
                 <Heading>Some content</Heading>
             </div>
 </Carousel>
+</>
 ```
 
 ```javascript
