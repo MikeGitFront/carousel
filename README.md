@@ -109,4 +109,11 @@ color:red;
 </Carousel>
 ```
 
+<h4>Dependencies</h4>
+<ul>
+ <li><a href="https://styled-components.com/">Styled components</a></li>
+ <li><a href="https://react-icons.github.io/react-icons/" >React-icons</a></li>
+</ul>
+
+Don't hesitate to become a stargazer :)
 
