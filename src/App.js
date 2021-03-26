@@ -8,8 +8,8 @@ import picture3 from './images/mountains3.jpg'
 import picture4 from './images/mountains4.jpg'
 import picture5 from './images/mountains5.jpg'
 
-const App = () => {
 
+const App = () => {
     return (
         <Carousel infinite>
             <div src={picture} ></div>
@@ -26,7 +26,7 @@ const App = () => {
             </div>
             <div
                 src={picture4}
-            ><iframe width="80%" height="300" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
+            ><iframe width="80%" height="370" src="https://www.youtube.com/embed/o_Ay_iDRAbc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
         </Carousel>
     );
 };
