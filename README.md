@@ -13,4 +13,8 @@
   <li><b>Supports scrolling to a selected slide</b></li>
 </ul>
 
-<i>Installing</i>
+<i>Installing:</i>
+You can clone this repository using following: 
+```javascript
+Const abc = 4
+```
