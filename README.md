@@ -36,7 +36,7 @@ npm run dev
 
 <h3><i>Usage:</i></h3>
 
-<h4>Infinite option</h4>
+<h4>Infinite option:</h4>
 
 ```javascript
 //If you want carousel to be infinite you should write 'infinite' attribute inside the Carousel tag
@@ -45,7 +45,7 @@ npm run dev
          //...Some content
 </Carousel>
 ```
-<h4>Slide options</h4>
+<h4>Slide options:</h4>
 <h2>Your content must be wrapped in 'div' block</h2>
 
 ```javascript
@@ -110,11 +110,11 @@ color:red;
 </Carousel>
 ```
 
-<h4>Dependencies</h4>
+<h4>Dependencies:</h4>
 <ul>
  <li><a href="https://styled-components.com/">Styled components</a></li>
  <li><a href="https://react-icons.github.io/react-icons/" >React-icons</a></li>
 </ul>
 
-Don't hesitate to become a stargazer ⭐:
+<h3>Don't hesitate to become a stargazer ⭐:</h3>
 
