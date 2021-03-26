@@ -3,7 +3,7 @@
 
 <a href="https://imgur.com/a/HIG1fyr">Demo</a>
 
-<i>Carousel characteristics:</i>
+<h2><i>Carousel characteristics:</i></h2>
  <ul>
   <li>Works for mobile and desktop devices</li>
   <li>Supports swipes</li>
@@ -13,7 +13,7 @@
   <li><b>Supports scrolling to a selected slide</b></li>
 </ul>
 
-<i>Installing:</i>
+<h3><i>Installing:</i></h3>
 Write it in your terminal: 
 ```terminal
 //Make sure you don't have folder named 'carousel' in the directory
@@ -26,28 +26,18 @@ git clone https://github.com/MikeGitFront/carousel.git
 git init
 ```
 
-<i>Usage:</i>
+<h3><i>Usage:</i></h3>
 
-<h3>Infinite option</h3>
+<h4>Infinite option</h4>
 
 ```javascript
-//If you want to display picture you should pass picture URL or just
+//If you want carousel to be infinite you should write 'infinite' attribute inside the Carousel tag
 
 <Carousel infinite>
-            <div src={pictureURL} ></div>
-            <div src={picture} ></div>
-            <div src={picture2} ></div>
-            <div src={picture3} ></div>
-            <div
-                src={picture5}
-                align="flex-start"
-                padding="4px 10px"
-                color="black"
-            >
-                <h1>Some content</h1>
-            </div>
+         //...Some content
 </Carousel>
 ```
+<h4>Slide option</h4>
 
 ```javascript
 //If you want to display picture you should pass picture URL or just
