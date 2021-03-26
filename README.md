@@ -16,5 +16,9 @@
 <i>Installing:</i>
 Write it in your terminal: 
 ```terminal
-git clone
+//Make sure you don't have folder named 'carousel' in the directory
+git clone https://github.com/MikeGitFront/carousel.git
+
+//Installing all dependencies
+git init
 ```
