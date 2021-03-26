@@ -39,16 +39,22 @@ git init
          //...Some content
 </Carousel>
 ```
-<h4>Slide option</h4>
+<h4>Slide options</h4>
+<h2>Your content must be wrapped in 'div' block</h2>
 
 ```javascript
-//If you want to display picture you should pass picture URL or just
+//If you want to display image you should pass external link or imported image in 'src' attribute
 
 <Carousel infinite>
             <div src={pictureURL} ></div>
-            <div src={picture} ></div>
-            <div src={picture2} ></div>
-            <div src={picture3} ></div>
+            <div src={'https://your.image'} ></div>
+</Carousel>
+```
+
+```javascript
+//If you pass different parameters
+
+<Carousel infinite>
             <div
                 src={picture5}
                 align="flex-start"
