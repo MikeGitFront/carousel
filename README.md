@@ -3,7 +3,7 @@
 
 <a href="https://imgur.com/a/HIG1fyr">Demo</a>
 
-Carousel characteristics:
+<i>Carousel characteristics:</i>
  <ul>
   <li>Works for mobile and desktop devices</li>
   <li>Supports swipes</li>
