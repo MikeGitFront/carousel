@@ -74,6 +74,11 @@ const Dot = styled.button`
     border-radius:20px;
     outline:none;
     box-shadow:${({ active }) => active ? 'inset 0px 0px 2px 2px white' : 'none'};
+
+    &:hover {
+        background:#333;
+        box-shadow: inset 0px 0px 2px 2px white;
+    }
 `
 
 
