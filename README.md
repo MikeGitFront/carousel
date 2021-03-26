@@ -51,10 +51,12 @@ git init
 </Carousel>
 ```
 
-```javascript
-//If you pass different parameters
 
-<Carousel infinite>
+
+```javascript
+//You can pass different parameters to your wrapper 'div', by the way,  they are optional
+
+<Carousel>
             <div
                 src={picture5}
                 align="flex-start"
@@ -65,3 +67,15 @@ git init
             </div>
 </Carousel>
 ```
+
+<h3><i>Full list of options:</i></h3>
+
+<ul>
+ <li>display <i>By default flex</i></li>
+ <li>template (for display:grid) <i>By default none</i></li>
+ <li>justify (Simple justify-content) <i>By default center</i></li>
+ <li>align (Simple align-items) <i>By default center</i></li>
+ <li>bgcolor (Simple background-color, src prop has higher priority) <i>By default white</i></li>
+ <li>color (Simple text color)<i>By default white</i></li>
+ <li>padding <i>By default 4px</i></li>
+</ul>
