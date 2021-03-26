@@ -25,3 +25,22 @@ git clone https://github.com/MikeGitFront/carousel.git
 
 git init
 ```
+
+<i>Usage:</i>
+
+```javascript
+<Carousel infinite>
+            <div src={picture} ></div>
+            <div src={picture1} ></div>
+            <div src={picture2} ></div>
+            <div src={picture3} ></div>
+            <div
+                src={picture5}
+                align="flex-start"
+                padding="4px 10px"
+                color="black"
+            >
+                <h1>Some content</h1>
+            </div>
+</Carousel>
+```
