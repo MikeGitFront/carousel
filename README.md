@@ -1,4 +1,5 @@
-Carousel
+<h1>Carousel component</h1>
+<br>
 
 <a href="https://imgur.com/a/HIG1fyr">Demo</a>
 
