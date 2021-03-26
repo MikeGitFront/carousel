@@ -12,3 +12,5 @@ Carousel characteristics:
   <li><b>Supports infinite option</b></li>
   <li><b>Supports scrolling to a selected slide</b></li>
 </ul>
+
+<i>Installing</i>
