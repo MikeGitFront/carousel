@@ -1,6 +1,6 @@
 <h1>Carousel component</h1>
 <br>
-<h2>Another carousel component made with different approach<a href="https://github.com/MikeGitFront/carousel-second">Must see</a></h2>
+<h2>Another carousel component made with different approach. <a href="https://github.com/MikeGitFront/carousel-second">Must see</a></h2>
 
 <h2>Here you can find short <a href="https://imgur.com/a/HIG1fyr">Demo</a></h2> 
 
